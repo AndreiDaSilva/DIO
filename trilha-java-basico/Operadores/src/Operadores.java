@@ -101,7 +101,20 @@ public class Operadores {
             System.out.println("Nome é igual");
         }
 
+        //Logicos
+        boolean condicao1 = true;
+        boolean condicao2 = false;
 
+        if (condicao1 && condicao2) {
+            System.out.println("As duas condições são verdadeira");
+        }
+        
+        if (condicao1 || condicao2) {
+            System.out.println("Uma das duas condições são verdadeiras");
+            
+        }
+
+        System.out.println("fim");
     }
 
 }
