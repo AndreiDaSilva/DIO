@@ -3,7 +3,7 @@ public class SmartTv {
     int canal = 1;
     int volume = 25;
 
-    public void ligar(){
+    public void ligar() {
         ligada = true;
     }
 
@@ -15,7 +15,7 @@ public class SmartTv {
         volume++;
         System.out.println("Volume: " + volume);
     }
-    
+
     public void diminuirVolume() {
         volume--;
         System.out.println("Volume: " + volume);
@@ -25,7 +25,7 @@ public class SmartTv {
         canal++;
         System.out.println("Volume: " + volume);
     }
-    
+
     public void diminuirCanal() {
         canal--;
         System.out.println("Volume: " + volume);
@@ -33,6 +33,19 @@ public class SmartTv {
 
     public void mudarCanal(int novaCanal) {
         canal = novaCanal;
+    }
+
+    @Override
+    public String toString() {
+        String msg = "Status: ";
+        if (ligada == true) {
+            msg += "\n Ligada: " + ligada;
+            msg += "\n Canal: " + canal;
+            msg += "\n Volume: " + volume;
+        } else {
+            msg += "\n Ligada: " + ligada;
+        }
+        return msg;
     }
 
 }
