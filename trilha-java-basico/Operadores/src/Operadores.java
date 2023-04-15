@@ -28,8 +28,20 @@ public class Operadores {
         numero =+ 1;
 
         System.out.println(numero);
+
+        numero--;
+
+        System.out.println(numero);
         
+        //negação de boolean
+
+        boolean ehVerdade = true;
         
+        System.out.println(!ehVerdade);
+
+        ehVerdade = !ehVerdade;
+
+        System.out.println(ehVerdade);
     }
 
 
