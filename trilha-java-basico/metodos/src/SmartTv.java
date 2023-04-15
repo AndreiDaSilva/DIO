@@ -31,7 +31,7 @@ public class SmartTv {
 
     /**
      * Este método é utilizado para aumentar o volume somando 1 no valor da variável 
-     * @return retorna no console novo valor da variável volume
+     * retorna no console novo valor da variável volume
      */
     public void aumetarVolume() {
         volume++;
@@ -40,7 +40,7 @@ public class SmartTv {
 
     /**
      * Este método é utilizado para diminui o volume subtraindo 1 no valor da variável 
-     * @return retorna no console novo valor da variável volume
+     * retorna no console novo valor da variável volume
      */
     public void diminuirVolume() {
         volume--;
@@ -50,7 +50,7 @@ public class SmartTv {
     
     /**
      * Este método é utilizado para aumentar o canal somando 1 no valor da variável 
-     * @return retorna no console novo valor da variável canal
+     * retorna no console novo valor da variável canal
      */
     public void aumetarCanal() {
         canal++;
@@ -59,7 +59,7 @@ public class SmartTv {
 
     /**
      * Este método é utilizado para diminui o canal subtraindo 1 no valor da variável 
-     * @return retorna no console novo valor da variável canal
+     * retorna no console novo valor da variável canal
      */
     public void diminuirCanal() {
         canal--;
