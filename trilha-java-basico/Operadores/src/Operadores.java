@@ -24,6 +24,10 @@ public class Operadores {
         numero++;
 
         System.out.println(numero);
+
+        numero =+ 1;
+
+        System.out.println(numero);
         
         
     }
