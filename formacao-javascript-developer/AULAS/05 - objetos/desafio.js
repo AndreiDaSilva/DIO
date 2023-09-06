@@ -5,20 +5,20 @@ Crie um método que dado a quantidade de quilómetros e o preço do combustível
 gasto em reais para realizar este percurso.
 */
 
-class Car{
+class Car {
     marca;
     cor;
     kmPorLitro;
 
-    constructor(marca, cor, kmPorLitro){
+    constructor(marca, cor, kmPorLitro) {
         this.cor = cor;
         this.kmPorLitro = kmPorLitro;
         this.marca = marca;
     }
 
     totalCombustivel(totalKM, precoCombustivel) {
-        const valorTotal = Math.floor((totalKM / this.kmPorLitro) * precoCombustivel); 
-        console.log(`o carro da marca ${this.marca} e cor ${this.cor} precisara de R$${valorTotal} para essa viagem`)    
+        const valorTotal = Math.floor((totalKM / this.kmPorLitro) * precoCombustivel);
+        console.log(`o carro da marca ${this.marca} e cor ${this.cor} precisara de R$${valorTotal} para essa viagem`)
     }
 }
 
@@ -37,20 +37,20 @@ Instancie uma pessoa chamada José que tenha 70kg de peso e 1,75 de altura e pe�
 do seu IMC;   
 */
 
-class Pessoa{
+class Pessoa {
     nome;
     peso;
     altura;
 
-    constructor(nome, peso, altura){
+    constructor(nome, peso, altura) {
         this.nome = nome;
         this.peso = peso;
         this.altura = altura;
     }
 
-    imc(){
-        const imc = Math.floor(this.peso / (this.altura * this.altura));
-       console.log(`${this.nome} tem o IMC igual a ${imc}`)
+    imc() {
+        const imc = Math.floor(this.peso / (this.altura**2));
+        console.log(`${this.nome} tem o IMC igual a ${imc}`)
     }
 }
 
@@ -60,3 +60,10 @@ const jose = new Pessoa('Jose', 70, 1.75);
 jose.imc();
 
 console.log(jose);
+
+const andrei = new Pessoa('Andrei', 111, 1.79);
+
+
+andrei.imc();
+
+console.log(andrei);
