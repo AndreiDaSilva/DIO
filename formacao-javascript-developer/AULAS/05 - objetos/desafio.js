@@ -17,16 +17,17 @@ class Car {
     }
 
     totalCombustivel(totalKM, precoCombustivel) {
-        const valorTotal = Math.floor((totalKM / this.kmPorLitro) * precoCombustivel);
-        console.log(`o carro da marca ${this.marca} e cor ${this.cor} precisara de R$${valorTotal} para essa viagem`)
+        return Math.round((totalKM / this.kmPorLitro) * precoCombustivel, -2);
     }
 }
 
 const gol = new Car('VW', 'Branco', 16.9);
-
-gol.totalCombustivel(872, 4.89);
+console.log(gol.totalCombustivel(872, 4.89));
 console.log(gol);
 
+const x6 = new Car('BMW', 'Vermelha', 4.78);
+console.log(x6.totalCombustivel(872, 4.89));
+console.log(x6);
 
 
 /*
@@ -48,22 +49,33 @@ class Pessoa {
         this.altura = altura;
     }
 
-    imc() {
-        const imc = Math.floor(this.peso / (this.altura**2));
-        console.log(`${this.nome} tem o IMC igual a ${imc}`)
+    calcularImc() {
+        return Math.round(this.peso / (this.altura ** 2), -2);
+
+    }
+
+    classificarImc(){
+        const imc = this.calcularImc();
+        if (imc < 18.5) {
+            return `${this.nome} está a Baixo peso`
+        } else if(imc >= 18.5 && imc < 25){
+            return `${this.nome} está no Peso Normal`
+        } else if(imc >= 25 && imc < 30){
+            return `${this.nome} está com Sobrepeso`
+        } else if(imc >= 30 && imc < 35){
+            return `${this.nome} está com Obesidade grau I`
+        } else if(imc >= 35 && imc < 40){
+            return `${this.nome} está com Obesidade grau II`
+        } else if(imc > 40){
+            return `${this.nome} está com Obesidade grau III`
+        }
     }
 }
 
 const jose = new Pessoa('Jose', 70, 1.75);
-
-
-jose.imc();
-
-console.log(jose);
+console.log(jose.calcularImc());
+console.log(jose.classificarImc());
 
 const andrei = new Pessoa('Andrei', 111, 1.79);
-
-
-andrei.imc();
-
-console.log(andrei);
+console.log(andrei.calcularImc());
+console.log(andrei.classificarImc());
