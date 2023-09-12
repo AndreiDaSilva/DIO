@@ -1,7 +1,8 @@
 1- Faça um programa que receba um número e escreva a sua respectiva tabuada.
-    Exemplo:
-        Entrada:
-            2
+    
+        Exemplo:
+            Entrada:
+                2
 
         Saída:
             2x1 = 2
