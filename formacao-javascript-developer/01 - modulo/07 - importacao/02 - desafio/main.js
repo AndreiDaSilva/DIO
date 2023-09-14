@@ -1,17 +1,16 @@
-const {gets, print} = require('./funcao')
+const { gets, print } = require('./funcao')
 
 const qtdNumeros = gets();
-const numeros = []
+let isMaior = null;
+let isMenor = null;
 for (let i = 0; i < qtdNumeros; i++) {
-    numeros.push(gets());  
-}
-
-let isMaior = 0;
-let isMenor = numeros[qtdNumeros - 1];
-
-for (let i = 0; i < numeros.length; i++) {
-    isMaior = numeros[i] > isMaior ? numeros[i] : isMaior;
-    isMenor = numeros[i] < isMenor ? numeros[i] : isMenor;
+    const numeros = gets()
+    if (isMaior === null || isMaior < numeros) {
+        isMaior = numeros;
+    }
+    if (isMenor === null || isMenor > numeros) {
+        isMenor = numeros;
+    }
 }
 
 print(isMaior);
