@@ -6,4 +6,11 @@
 <img src="./Img Project/Tela Load More Pokedex.png">
 
 <br>
-<p>Para utilização do projeto em sua maquina, baixe a pasata POKEDEX e abrir o arquivo index.html em seu navegador.</p>
+Para utilização do projeto em sua maquina, baixe a pasata POKEDEX 
+
+<img src="./Img Project/Pasta POKEDEX.png">
+
+<br>
+<br>
+Abra o arquivo index.html em seu navegador.
+<img src="./Img Project/index.png">
