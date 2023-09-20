@@ -5,7 +5,7 @@
     undefined
     number
     string
-    synbol
+    Symbol
 */
 
 //Object
@@ -39,8 +39,38 @@ let u = {nome: null};
 console.log(u.nome); //null
 console.log(u.idade); //undefined
 
+//numbers
 
+// +Infinity -Infinity e NaN
+// Double Precision 64-bit binary format IEEE 754
 
+let number = 10; //inteiros
+number = 10.10; //double
 
+//string
 
+let text01 = "text"; //representação html - '<div id="10">Teste</div>'
+let text02 = '<div id="10">Teste</div>';
+let text03 = `<div id=${id}>Teste</div>`; // para concatenar ${variável} - `<div id=${id}>Teste</div>`
 
+//Symbol - um objeto imutável único
+
+const z = Symbol('10');
+const p = Symbol('10');
+
+console.log(x === y); //false
+
+//object - coleção dinâmica de chave e valores
+
+const t = {
+    nome: 'Renan',
+    idade: 10
+}; //objeto literal
+
+x.sobrenome = 'Silva'
+
+t.falar = function () {
+    console.log(`Meu nome é ${this.nome}`)
+}
+
+x['nome'] = 'Jose'
