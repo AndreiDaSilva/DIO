@@ -1,10 +1,10 @@
 {
     "name": "Andrei Robon da Silva",
     "photo": "https://l1nq.com/RHM0K",
-    "job": "Programmer in training",
-    "location": "Blumenau - SC",
+    "person": "Programmer in training",
+    "local": "Blumenau - SC",
     "phone": "(47) 99231-4502",
-    "email": "silva.andrei@outlook.com.br",
+    "envelope": "silva.andrei@outlook.com.br",
     "skills": {
         "hardSkills": [
             {
