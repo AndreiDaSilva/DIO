@@ -29,6 +29,7 @@ h5{
 header {
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +44,29 @@ header .user img{
     padding: 0 1rem;
 }
 
-.sidebar{
+main{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 5fr;
+}
+
+.menu{
+    margin: .5rem .5rem 0 0;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
+}
+
+.sidebar{
+    margin-top: .5rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 15px;
+}
+
+
+.sidebar{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
 }
