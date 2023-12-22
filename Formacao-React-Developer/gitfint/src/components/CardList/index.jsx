@@ -17,6 +17,7 @@ const CardList = ({ title, description }) => {
       borderBottom={"2px solid #f4f4f4"}
       borderRadius={0}
       margin={"2rem 0"}
+      boxShadow={"0"}
     >
       <CardHeader p={".5rem 1rem"}>
         <Heading size="md" color={"#539BF5"}>

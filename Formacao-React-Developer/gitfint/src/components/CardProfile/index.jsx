@@ -10,6 +10,7 @@ const CardProfile = ({ photo, name, nikename, description }) => {
       color={"#999999"}
       mt={"2rem"}
       border={"none"}
+      borderRadius={0}
       borderBottom={"2px"}
       padding={"1rem"}
     >

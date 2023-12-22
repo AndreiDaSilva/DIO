@@ -5,8 +5,30 @@ import InputSearch from "../../components/InputSearch";
 import backgroundImg from "../../assets/img/logo-git-background.svg"
 import CardProfile from "../../components/CardProfile";
 import CardList from "../../components/CardList";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+  const [repos, setRepos] = useState(null);
+
+  const handleGetDados = async () => {
+    const userData = await fetch(`https://api.github.com/users/${user}`);
+    const newUser = await userData.json();
+
+    if (userData.name) {
+      const { avatar_url, name, bio } = newUser;
+      setCurrentUser({ avatar_url, name, bio })
+
+      const reposData = await fetch(`https://api.github.com/users/${user}/repos`);
+      const newRepos = await userData.json();
+
+      if (newRepos.length) {
+        
+      }
+    }
+  }
+
   return (
     <>
       <Header title={"GitFint"} />
@@ -27,8 +49,11 @@ function App() {
           <Box
             display={"flex"}
           >
-            <InputSearch />
-            <ButtonSearch />
+            <InputSearch
+              placeholder={"@usuario"}
+              value={user}
+              onChange={event => setUser(event.target.value)} />
+            <ButtonSearch onClick={handleGetDados} />
           </Box>
           <Box>
             <CardProfile

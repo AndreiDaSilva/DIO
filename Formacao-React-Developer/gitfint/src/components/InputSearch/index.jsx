@@ -1,11 +1,18 @@
 import { Input } from "@chakra-ui/react";
 
-const InputSearch = () => {
+const InputSearch = ({ value, onChange, placeholder}) => {
   return (
     <>
-    <Input placeholder='@usuario' w={"80%"} borderRadius={"25px"} color={"#F4F4F4"}/>
+      <Input
+        placeholder={placeholder}
+        w={"80%"}
+        borderRadius={"25px"}
+        color={"#F4F4F4"}
+        value={value}
+        onChange={onChange}
+      />
     </>
-  )
-}
+  );
+};
 
 export default InputSearch;
