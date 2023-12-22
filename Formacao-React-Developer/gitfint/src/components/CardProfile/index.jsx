@@ -1,21 +1,38 @@
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Card, Text, Stack, CardBody, Heading } from "@chakra-ui/react";
 
 const CardProfile = ({ photo, name, nikename, description }) => {
   return (
-    <Flex color={"#999999"} mt={"2rem"}>
-      <Box
-        border={"1px solid #F4F4F4"}
-        borderRadius={"50%"}
-        boxShadow={"1px  1px 10px"}
+    <Card
+      direction={{ base: "column", sm: "row" }}
+      overflow="hidden"
+      variant="outline"
+      bg={"transparent"}
+      color={"#999999"}
+      mt={"2rem"}
+      border={"none"}
+      borderBottom={"2px"}
+      padding={"1rem"}
+    >
+      <Stack
+        display={"flex"}
+        minH={"200px"}
+        objectFit={"cover"}
+        maxW={{ base: "100%", sm: "200px" }}
+        alignContent={"center"}
+        justifyContent={"center"}
+        margin={"auto"}
       >
         {photo}
-      </Box>
-      <Flex direction={"column"} ml={"4"}>
-        <Text fontSize={"4xl"} mb={"0"}>{name}</Text>
-        <Text fontSize={"xs"} mt={"0"}>{nikename}</Text>
-        <Text fontSize={"md"} noOfLines={"2"}>{description}</Text>
-      </Flex>
-    </Flex>
+      </Stack>
+      <Stack>
+        <CardBody>
+          <Heading size="md">{name}</Heading>
+          <Heading size="xs">{nikename}</Heading>
+
+          <Text py="2">{description}</Text>
+        </CardBody>
+      </Stack>
+    </Card>
   );
 };
 
