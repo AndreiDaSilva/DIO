@@ -9,6 +9,8 @@ const ButtonSearch = () => {
         variant="outline" 
         color={"#f4f4f4"}
         maxW={"85px"}  
+        borderRadius={"25px"}
+        margin={"0 10px"}
         >
         <Search2Icon boxSize={4}/>
       </Button>
