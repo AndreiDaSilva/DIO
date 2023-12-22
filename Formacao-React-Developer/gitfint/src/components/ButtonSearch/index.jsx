@@ -4,15 +4,15 @@ import { Stack, Button } from "@chakra-ui/react";
 const ButtonSearch = () => {
   return (
     <Stack>
-      <Button 
-        colorScheme="#2D333B" 
-        variant="outline" 
+      <Button
+        colorScheme="#2D333B"
+        variant="outline"
         color={"#f4f4f4"}
-        maxW={"85px"}  
+        w={"100px"}
         borderRadius={"25px"}
         margin={"0 10px"}
-        >
-        <Search2Icon boxSize={4}/>
+      >
+        <Search2Icon boxSize={4} />
       </Button>
     </Stack>
   );

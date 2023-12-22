@@ -3,7 +3,7 @@ import { Input } from "@chakra-ui/react";
 const InputSearch = () => {
   return (
     <>
-    <Input placeholder='@usuario' maxW={"500px"} borderRadius={"25px"}/>
+    <Input placeholder='@usuario' w={"80%"} borderRadius={"25px"} color={"#F4F4F4"}/>
     </>
   )
 }

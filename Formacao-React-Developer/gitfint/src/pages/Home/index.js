@@ -13,7 +13,7 @@ function App() {
         display={"flex"}
         alignItems={"flex-start"}
         justifyContent={"flex-end"}
-      >        
+      >
         <Box>
           <Image src={backgroundImg} alt="logo img git" height={"100vh"} position={"absolute"} left={0} />
         </Box>
@@ -25,8 +25,15 @@ function App() {
           <Box
             display={"flex"}
           >
-          <InputSearch />
-          <ButtonSearch />
+            <InputSearch />
+            <ButtonSearch />
+          </Box>
+          <Box>
+            <Image src="https://avatars.githubusercontent.com/u/81041979?v=4" className="profile-photo" alt="foto do usuario" />
+            <Box>
+              <h3 >Andrei R da Silva</h3>
+              <p>Descrição</p>
+            </Box>
           </Box>
         </Box>
       </Flex>
