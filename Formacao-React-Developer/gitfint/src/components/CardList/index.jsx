@@ -7,9 +7,13 @@ import {
   Stack,
   Box,
   Text,
+  CardFooter,
+  ButtonGroup,
+  Button,
+  Link,
 } from "@chakra-ui/react";
 
-const CardList = ({ title, description }) => {
+const CardList = ({ title, description, link }) => {
   return (
     <Card
       bg={"transparent"}
@@ -33,6 +37,20 @@ const CardList = ({ title, description }) => {
           </Box>
         </Stack>
       </CardBody>
+      <CardFooter justifyContent={"end"}>
+        <ButtonGroup spacing="2">
+          <Button
+            border={"1px solid orange"}
+            bg={"transparent"}
+            color={"#999999"}
+            _hover={{bg: "rgb(255, 165, 0, 0.2)", color: "#fff"}}
+          >
+            <Link href={link} isExternal>
+              Link
+            </Link>
+          </Button>
+        </ButtonGroup>
+      </CardFooter>
     </Card>
   );
 };

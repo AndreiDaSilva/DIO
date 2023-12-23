@@ -16,15 +16,16 @@ function App() {
     const userData = await fetch(`https://api.github.com/users/${user}`);
     const newUser = await userData.json();
 
-    if (userData.name) {
-      const { avatar_url, name, bio } = newUser;
-      setCurrentUser({ avatar_url, name, bio })
+    if (newUser.name) {
+      const { avatar_url, name, bio, login } = newUser;
+      setCurrentUser({ avatar_url, name, bio, login });
 
       const reposData = await fetch(`https://api.github.com/users/${user}/repos`);
-      const newRepos = await userData.json();
+      const newRepos = await reposData.json();
 
+      console.log(repos)
       if (newRepos.length) {
-        
+        setRepos(newRepos);
       }
     }
   }
@@ -55,32 +56,34 @@ function App() {
               onChange={event => setUser(event.target.value)} />
             <ButtonSearch onClick={handleGetDados} />
           </Box>
-          <Box>
-            <CardProfile
-              photo={
-                <WrapItem>
-                  <Avatar
-                    border={"1px solid #999999"}
-                    boxShadow={"1px  1px 10px"}
-                    size='2xl'
-                    name='Segun Adebayo'
-                    src='https://avatars.githubusercontent.com/u/81041979?v=4' />{' '}
-                </WrapItem>
-              }
-              name={"Andrei Robson da Silva"}
-              nikename={"@andreidasilva"}
-              description={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"}
-            />
-          </Box>
-          <Box display={"flex"} justifyContent={"center"} margin={"2rem 0"}>
-            <Text fontWeight={"900"} fontSize={"4xl"} color={"#f4f4f4"} >Repositórios</Text>
-          </Box>
-          <Box className="ListCards">
-            <CardList title={"Title do Projeto"} description={"Descrição do projeto"} />
-            <CardList title={"Title do Projeto"} description={"Descrição do projeto"} />
-            <CardList title={"Title do Projeto"} description={"Descrição do projeto"} />
-            <CardList title={"Title do Projeto"} description={"Descrição do projeto"} />
-          </Box>
+          {currentUser?.name ? <>
+            <Box>
+              <CardProfile
+                photo={
+                  <WrapItem>
+                    <Avatar
+                      border={"1px solid #999999"}
+                      boxShadow={"1px  1px 10px"}
+                      size='2xl'
+                      name='Segun Adebayo'
+                      src={currentUser.avatar_url} />{' '}
+                  </WrapItem>
+                }
+                name={currentUser.name}
+                nikename={"@" + currentUser.login}
+                description={currentUser.bio}
+              />
+            </Box>
+            <Box display={"flex"} justifyContent={"center"} margin={"2rem 0"}>
+              <Text fontWeight={"900"} fontSize={"4xl"} color={"#f4f4f4"} >Repositórios</Text>
+            </Box>
+          </> : null}
+          {repos?.length ? (
+            <Box>
+              {repos.map(repo => (
+                <CardList title={repo.name} description={repo.description} link={repo.html_url} />
+              ))}
+            </Box>) : null}
         </Box>
       </Flex>
     </>
