@@ -6,14 +6,20 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '../Button';
+import LinkIcon from '@mui/icons-material/Link';
 
 
-function ListRepo({ title, description }) {
+function ListRepo({ repo }) {
     return (
-        <List sx={{ width: '100%', maxWidth: 560, bgcolor: 'transparent' }}>
+        <List sx={{
+            width: '100%',
+            maxWidth: 560,
+            bgcolor: 'transparent',
+            borderBottom: '.5px solid #999999'
+        }}>
             <ListItem alignItems="flex-start">
                 <ListItemText
-                    primary={title}
+                    primary={repo.name}
                     secondary={
                         <React.Fragment>
                             <Typography
@@ -22,20 +28,20 @@ function ListRepo({ title, description }) {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                {description}
+                                {repo.full_name}
                             </Typography>
                         </React.Fragment>
                     }
                 />
             </ListItem>
             <div className='button'>
+                <LinkIcon />
                 <Button
-                    conteund={'Delete'}
                     icon={<DeleteIcon />}
                     color={'error'}
+                    content={'delete'}
                 />
             </div>
-            <Divider variant="inset" component="li" />
         </List>
     );
 }

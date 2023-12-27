@@ -14,10 +14,12 @@ export const Container = styled.div`
     .button{
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     .button Button{
-        margin: 10px;
+        margin: 0 20px 10px 20px;
     }
 `
 
