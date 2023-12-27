@@ -2,7 +2,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import Input from '../components/Input';
 import { Container, darkTheme } from './style'
 import ListRepo from '../components/ListRepo';
-import { ThemeProvider } from '@mui/material';
+import { Grid, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import Button from '../components/Button';
 import SearchIcon from '@mui/icons-material/Search';
@@ -42,7 +42,7 @@ function App() {
           color={'success'}
           content={'Buscar'}
           onClick={handlerSearchRepo} />
-        {repos.map(repo => <ListRepo repo={repo} />)}
+            {repos.map(repo => <ListRepo repo={repo} />)}
       </Container>
     </ThemeProvider>
   );
