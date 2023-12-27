@@ -1,13 +1,9 @@
 import React from 'react'
 import { TextField, ThemeProvider, createTheme } from '@mui/material'
 
-const theme = createTheme({
+const themeDark = createTheme({
     palette: {
-        text: {
-            primary: {
-                main: '#fff'
-            },
-        },
+        mode: 'dark',
     },
 });
 
@@ -15,7 +11,7 @@ const theme = createTheme({
 function Input({ label }) {
     return (
         <>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={themeDark}>
                 <TextField color='primary' id="outlined-basic" label={label} variant="outlined" />
             </ThemeProvider>
         </>
