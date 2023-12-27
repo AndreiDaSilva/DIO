@@ -1,6 +1,7 @@
+import { createTheme } from "@mui/material";
 import styled from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
     width: 100%;
     height: 90vh;
 
@@ -20,4 +21,8 @@ const Container = styled.div`
     }
 `
 
-export default Container;
+export const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});

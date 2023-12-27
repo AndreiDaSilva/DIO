@@ -1,19 +1,21 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Input from '../components/Input';
-import Container from './style'
+import {Container, darkTheme} from './style'
 import ListRepo from '../components/ListRepo';
+import { ThemeProvider } from '@mui/material';
+
 
 
 
 function App() {
   return (
-    <Container>
-      <GitHubIcon sx={{ fontSize: 126 }} />
-      <Input label={'@username'} margin={'normal'} width={'60vh'} />
-      <ListRepo title={"Andrei"} description={"Comprador, unibox atacarejo"}/>
-      <ListRepo title={"Tana"} description={"Analista de Rh, Unibox atarejo"}/>
-      <ListRepo title={"Paulo"} description={"Coordenador de Rh, Unibox atacarejo"}/>
-    </Container>
+    <ThemeProvider theme={darkTheme}>
+      <Container>
+        <GitHubIcon sx={{ fontSize: 126 }} />
+        <Input label={'@username'} margin={'normal'} width={'60vh'} />
+        <ListRepo title={"Andrei"} description={"Comprador, unibox atacarejo"} />
+      </Container>
+    </ThemeProvider>
   );
 }
 
