@@ -1,19 +1,9 @@
-import { SearchIcon } from "@chakra-ui/icons";
-import {
-  ChakraProvider,
-  FormControl,
-  FormLabel,
-  Input,
-  extendTheme,
-  Box,
-  InputGroup,
-  InputRightElement,
-  Button,
-} from "@chakra-ui/react";
+
+import * as C from "@chakra-ui/react";
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-24px)",
 };
-export const theme = extendTheme({
+export const theme = C.extendTheme({
   components: {
     Form: {
       variants: {
@@ -49,19 +39,19 @@ export const theme = extendTheme({
 
 export default function InputLabel({ label, contend }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Box p={8}>
-        <FormControl variant="floating" id="repo_user" >
-          <InputGroup size='md'>
-            <Input placeholder=" " border={'1px solid #999999'} />
-            <InputRightElement width='4.5rem'>
+    <C.ChakraProvider theme={theme}>
+      <C.Box p={8}>
+        <C.FormControl variant="floating" id="repo_user" >
+          <C.InputGroup size='md'>
+            <C.Input placeholder=" " border={'1px solid #999999'} />
+            <C.InputRightElement width='4.5rem'>
               {contend}
-            </InputRightElement>
-          </InputGroup>
+            </C.InputRightElement>
+          </C.InputGroup>
 
-          <FormLabel>{label}</FormLabel>
-        </FormControl>
-      </Box>
-    </ChakraProvider>
+          <C.FormLabel color={'#999999'}>{label}</C.FormLabel>
+        </C.FormControl>
+      </C.Box>
+    </C.ChakraProvider>
   );
 }
