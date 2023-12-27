@@ -1,11 +1,14 @@
 import React from 'react'
+import { Button as ButtonMui} from '@mui/material';
 
-export default function Button({ icon, conteund }) {
+function Button({ icon, conteund, color}) {
     return (
         <>
-            <Button variant="contained" endIcon={icon}>
+            <ButtonMui variant="outlined" startIcon={icon} color={color}>
                 {conteund}
-            </Button>
+            </ButtonMui>
         </>
     )
 }
+
+export default Button;

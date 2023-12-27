@@ -8,11 +8,17 @@ const themeDark = createTheme({
 });
 
 
-function Input({ label }) {
+function Input({ label, fullWidth, margin, width }) {
     return (
         <>
             <ThemeProvider theme={themeDark}>
-                <TextField color='primary' id="outlined-basic" label={label} variant="outlined" />
+                <TextField
+                    color='primary'
+                    id="outlined-basic"
+                    label={label}
+                    variant="outlined"
+                    margin={margin}
+                    sx={{ minWidth: { width }}} />
             </ThemeProvider>
         </>
     )
