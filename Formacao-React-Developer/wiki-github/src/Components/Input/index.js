@@ -47,7 +47,7 @@ export const theme = extendTheme({
   },
 });
 
-export default function InputLabel({ label }) {
+export default function InputLabel({ label, contend }) {
   return (
     <ChakraProvider theme={theme}>
       <Box p={8}>
@@ -55,9 +55,7 @@ export default function InputLabel({ label }) {
           <InputGroup size='md'>
             <Input placeholder=" " border={'1px solid #999999'} />
             <InputRightElement width='4.5rem'>
-              <Button h='1.75rem' size='sm' bg={'green'}>
-                <SearchIcon color={'whitesmoke'} />
-              </Button>
+              {contend}
             </InputRightElement>
           </InputGroup>
 
