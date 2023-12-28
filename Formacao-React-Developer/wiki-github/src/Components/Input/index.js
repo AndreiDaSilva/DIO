@@ -23,7 +23,7 @@ export const theme = C.extendTheme({
               left: 0,
               zIndex: 2,
               position: "absolute",
-              backgroundColor: "white",
+              backgroundColor: '#22272E',
               pointerEvents: "none",
               mx: 3,
               px: 1,
@@ -37,19 +37,19 @@ export const theme = C.extendTheme({
   },
 });
 
-export default function InputLabel({ label, contend }) {
+export default function InputLabel({ label, contend, onChange, value }) {
   return (
     <C.ChakraProvider theme={theme}>
       <C.Box p={8}>
         <C.FormControl variant="floating" id="repo_user" >
           <C.InputGroup size='md'>
-            <C.Input placeholder=" " border={'1px solid #999999'} />
+            <C.Input placeholder=" " border={'1px solid #999999'} onChange={onChange} value={value}/>
             <C.InputRightElement width='4.5rem'>
               {contend}
             </C.InputRightElement>
           </C.InputGroup>
 
-          <C.FormLabel color={'#999999'}>{label}</C.FormLabel>
+          <C.FormLabel color={'#fff'} >{label}</C.FormLabel>
         </C.FormControl>
       </C.Box>
     </C.ChakraProvider>
