@@ -75,3 +75,9 @@ export const Row = styled.div`
     margin-top: 20px;
 `
 
+export const LinkDinamic = styled.a`
+    &:hover {
+            cursor: pointer;
+            opacity: 0.6;
+        }
+`

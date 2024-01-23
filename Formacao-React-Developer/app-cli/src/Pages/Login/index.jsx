@@ -8,6 +8,7 @@ import {
   CriarText,
   EsqueciText,
   SubTitleLogin,
+  LinkDinamic,
 } from "./styles";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -33,7 +34,7 @@ const schema = yup
   })
   .required();
 
-export const Login = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const {
@@ -45,7 +46,7 @@ export const Login = () => {
     mode: "onChange",
   });
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData) => {
     try {
       const { data } = await api.get(
         `users?email=${formData.email}&senha=${formData.password}`
@@ -53,11 +54,15 @@ export const Login = () => {
       if (data.length === 1) {
         navigate("/feed");
       } else {
-        alert('Email ou senha invalido')
+        alert("Email ou senha invalido");
       }
     } catch (error) {
       alert("Houve um erro, tente novamente.");
     }
+  };
+
+  const handleClickSignUp = () => {
+    navigate("/register");
   };
 
   return (
@@ -94,7 +99,9 @@ export const Login = () => {
             </form>
             <Row>
               <EsqueciText>Esqueci minha senha</EsqueciText>
-              <CriarText>Crriar Conta</CriarText>
+              <CriarText>
+                <LinkDinamic onClick={handleClickSignUp}>Criar Conta</LinkDinamic>
+              </CriarText>
             </Row>
           </Wrapper>
         </Column>
@@ -102,3 +109,5 @@ export const Login = () => {
     </>
   );
 };
+
+export { Login };

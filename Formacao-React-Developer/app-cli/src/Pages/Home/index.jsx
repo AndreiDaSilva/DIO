@@ -4,12 +4,12 @@ import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
+const Home = () => {
   const navigate = useNavigate();
 
   const handleClickSignIn = () => {
-    navigate('/login')
-  }
+    navigate("/login");
+  };
 
   return (
     <>
@@ -29,7 +29,11 @@ export const Home = () => {
             mundo e encare seu novo desafio profissional evoluindo em comunidade
             com os melhores experts.
           </TextContent>
-          <Button title={'Começa agora'} variant={'secondary'} onClick={handleClickSignIn}/>
+          <Button
+            title={"Começa agora"}
+            variant={"secondary"}
+            onClick={handleClickSignIn}
+          />
         </div>
         <div>
           <img src={banner} alt="banner dio" />
@@ -38,3 +42,5 @@ export const Home = () => {
     </>
   );
 };
+
+export { Home };
