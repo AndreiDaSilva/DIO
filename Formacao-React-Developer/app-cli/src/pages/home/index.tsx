@@ -3,6 +3,7 @@ import banner from "../../assets/img/banner-dio.png";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const Home = () => {
   const navigate = useNavigate();

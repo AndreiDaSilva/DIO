@@ -20,6 +20,8 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { IFormDate } from "./types";
+import React from "react";
 
 const schema = yup
   .object({
@@ -41,12 +43,12 @@ const Login = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm <IFormDate>({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
-  const onSubmit = async (formData) => {
+  const onSubmit = async (formData: IFormDate) => {
     try {
       const { data } = await api.get(
         `users?email=${formData.email}&senha=${formData.password}`

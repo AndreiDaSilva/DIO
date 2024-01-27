@@ -2,6 +2,7 @@ import { Container, Column, Title, TitleHighlight } from "./styles";
 import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { UserInfo } from "../../components/UserInfo";
+import React from "react";
 
 const Feed = () => {
   return (

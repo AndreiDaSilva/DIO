@@ -9,18 +9,18 @@ import {
   SubTitleLogin,
   Row,
   LinkDinamic,
-  LoginText,
   Text,
 } from "./styles";
 import { Input } from "../../components/Input";
 import { FaRegUser } from "react-icons/fa";
-import { useForm } from "react-hook-form";
+import { Resolver, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { MdEmail, MdLock } from "react-icons/md";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { IRegister } from "./types";
 
 const schema = yup
   .object({
@@ -38,7 +38,13 @@ const schema = yup
       .required("Campo obrigatorio"),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Senha não são iguais"),
+      .oneOf([yup.ref("password")], "Senhas não são iguais")
+      .required("Campo obrigatório")
+      .test({
+        name: "nullCheck",
+        test: (value) => value !== null,
+        message: "Campo obrigatório",
+      }),
   })
   .required();
 
@@ -49,16 +55,22 @@ const Registro = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IRegister>({
     resolver: yupResolver(schema),
     mode: "onChange",
+    defaultValues: {
+      user: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
   const handleClickSignIn = () => {
     navigate("/login");
   };
 
-  const onSubmit = async (formData) => {
+  const onSubmit = async (formData: IRegister) => {
     try {
       const { data } = await api.get(`users?email=${formData.email}`);
       if (data.length === 1) {
@@ -69,8 +81,6 @@ const Registro = () => {
           email: formData.email,
           senha: formData.password, // Mantendo consistência com os outros usuários
         };
-
-        const updatedUsers = [newUser];
 
         await api.post(`users`, newUser);
 
