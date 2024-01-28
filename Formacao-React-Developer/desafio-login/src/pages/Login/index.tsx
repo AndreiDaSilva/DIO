@@ -1,11 +1,20 @@
-import { Box, Grid, GridItem, Heading, IconButton, Text } from '@chakra-ui/react'
-import React from 'react'
-import CButton from '../../components/Button'
+import { Box, Button, Grid, GridItem, Heading, IconButton, Input, InputGroup, InputLeftAddon, Stack, Text } from '@chakra-ui/react'
 import { FaFacebook, FaGoogle, FaKey, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import CInput from '../../components/Input';
+import {useForm} from 'react-hook-form'
+import React from 'react'
 
-function Login() {
+const Login = () => {
+
+    const {
+        register, 
+        watch,
+        formState: {errors, isValid}
+    } = useForm();
+ 
+    const form = watch();
+
+    console.log(form)
     return (
 
         <Grid
@@ -30,12 +39,14 @@ function Login() {
                 <Box display='flex' flexDirection='column' alignItems='center' color='#fff'>
                     <Heading size='lg' fontSize='50px' noOfLines={1}>Faça seu cadastro</Heading>
                     <Text fontSize='1xl' maxW='60%' textAlign='center' fontWeight='100' p='2rem'>Ainda não tem cadastro? Criar um, é rápido e fácil! Click no botão a baixo e faça agora mesmo.</Text>
-                    <CButton
+                    <Button
                         title='CADASTRAR'
                         variant='outline'
                         colorScheme='gray'
                         color='#fff'
-                        _hover={{ bg: '#fff', color: '#58AF9C' }} />
+                        _hover={{ bg: '#fff', color: '#58AF9C' }}>
+                        CADASTRAR
+                    </Button>
                 </Box>
             </GridItem>
             <GridItem
@@ -75,14 +86,27 @@ function Login() {
                     <Text>ou use seu usuario/email e senha para fazer login</Text>
                     <Box p='6'>
                         <form>
-                            <CInput leftIcon={<MdEmail />} name='email' placeholder='email/usuario' />
-                            <CInput leftIcon={<FaKey />} name='password' placeholder='senha' />
-                            <CButton
-                                title='ENTRAR'
-                                colorScheme='teal'
-                                variant='solid'
-                                width='30%'
-                                _hover={{ bg: '#58AF9C', color: '#fff' }} />
+                            <Stack spacing={4} alignItems='center'>
+                                <InputGroup>
+                                    <InputLeftAddon>
+                                        <MdEmail />
+                                    </InputLeftAddon>
+                                    <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')}/>
+                                </InputGroup>
+                                <InputGroup>
+                                    <InputLeftAddon>
+                                        <FaKey />
+                                    </InputLeftAddon>
+                                    <Input type='password' placeholder='senha' {...register('password')}/>
+                                </InputGroup>
+                                <Button
+                                    title='ENTRAR'
+                                    colorScheme='teal'
+                                    variant='solid'
+                                    _hover={{ bg: '#58AF9C', color: '#fff' }}>
+                                    ENTRAR
+                                </Button>
+                            </Stack>
                         </form>
                     </Box>
                 </Box>
