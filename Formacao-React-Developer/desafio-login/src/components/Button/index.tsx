@@ -2,10 +2,16 @@ import React from 'react'
 import { Stack, Button } from '@chakra-ui/react'
 import { IButton } from './types'
 
-const CButton = ({ title, onClick }: IButton) => {
+const CButton = ({ title, onClick, variant, colorScheme, _hover, color, width}: IButton) => {
     return (
-        <Stack>
-            <Button colorScheme='green' variant='solid' onClick={onClick}>
+        <Stack alignItems='center' p='1rem'>
+            <Button
+                colorScheme={colorScheme}
+                variant={variant}
+                onClick={onClick}
+                color={color}
+                w={width}
+                _hover={{_hover}}>
                 {title}
             </Button>
         </Stack>
