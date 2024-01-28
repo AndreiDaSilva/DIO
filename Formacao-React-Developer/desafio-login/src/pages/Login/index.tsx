@@ -29,7 +29,7 @@ function Login() {
             >
                 <Box display='flex' flexDirection='column' alignItems='center' color='#fff'>
                     <Heading size='lg' fontSize='50px' noOfLines={1}>Faça seu cadastro</Heading>
-                    <Text fontSize='1xl' maxW='60%' textAlign='center' fontWeight='100' p='2rem'>Ainda não tem cadastro? Criar um, é rápido e fácil! Click no botão a baixo e faça agora memso.</Text>
+                    <Text fontSize='1xl' maxW='60%' textAlign='center' fontWeight='100' p='2rem'>Ainda não tem cadastro? Criar um, é rápido e fácil! Click no botão a baixo e faça agora mesmo.</Text>
                     <CButton
                         title='CADASTRAR'
                         variant='outline'
