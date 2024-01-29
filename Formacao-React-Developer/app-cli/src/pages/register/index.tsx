@@ -79,7 +79,7 @@ const Registro = () => {
         const newUser = {
           name: formData.user,
           email: formData.email,
-          senha: formData.password, // Mantendo consistência com os outros usuários
+          password: formData.password, // Mantendo consistência com os outros usuários
         };
 
         await api.post(`users`, newUser);

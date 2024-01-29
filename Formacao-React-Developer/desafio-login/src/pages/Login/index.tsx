@@ -2,8 +2,8 @@ import { Box, Button, Grid, GridItem, Heading, IconButton, Input, InputGroup, In
 import { FaFacebook, FaGoogle, FaKey, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import React from 'react';
 
 const schema = yup.object({
