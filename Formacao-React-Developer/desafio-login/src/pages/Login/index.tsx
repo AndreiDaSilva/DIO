@@ -1,20 +1,31 @@
 import { Box, Button, Grid, GridItem, Heading, IconButton, Input, InputGroup, InputLeftAddon, Stack, Text } from '@chakra-ui/react'
 import { FaFacebook, FaGoogle, FaKey, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import {useForm} from 'react-hook-form'
-import React from 'react'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import React from 'react';
+
+const schema = yup.object({
+    email: yup.string().email('Email inválido').required('Campo obrigatório'),
+    password: yup.string().min(8, 'No minimo 8 caracteres').required('Campo obrigatório')
+}).required();
 
 const Login = () => {
 
     const {
-        register, 
-        watch,
-        formState: {errors, isValid}
-    } = useForm();
- 
-    const form = watch();
+        register,
+        formState: { errors, isValid }
+    } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onBlur',
+        reValidateMode: 'onChange',
+    });
 
+    const form = register;
     console.log(form)
+    console.log(errors);
+
     return (
 
         <Grid
@@ -91,13 +102,13 @@ const Login = () => {
                                     <InputLeftAddon>
                                         <MdEmail />
                                     </InputLeftAddon>
-                                    <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')}/>
+                                    <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')} />
                                 </InputGroup>
                                 <InputGroup>
                                     <InputLeftAddon>
                                         <FaKey />
                                     </InputLeftAddon>
-                                    <Input type='password' placeholder='senha' {...register('password')}/>
+                                    <Input type='password' placeholder='senha' {...register('password')} />
                                 </InputGroup>
                                 <Button
                                     title='ENTRAR'
