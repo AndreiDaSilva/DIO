@@ -1,14 +1,14 @@
-import { Box, Button, Grid, GridItem, Heading, IconButton, Input, InputGroup, InputLeftAddon, Stack, Text } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Button, FormControl, FormErrorMessage, FormHelperText, Grid, GridItem, Heading, IconButton, Input, InputGroup, InputLeftAddon, Stack, Text } from '@chakra-ui/react'
 import { FaFacebook, FaGoogle, FaKey, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import React from 'react';
+import React, { useState } from 'react';
 
 const schema = yup.object({
     email: yup.string().email('Email inválido').required('Campo obrigatório'),
-    password: yup.string().min(8, 'No minimo 8 caracteres').required('Campo obrigatório')
+    password: yup.string().required('Campo obrigatório').min(8, 'No minimo 8 caracteres')
 }).required();
 
 const Login = () => {
@@ -22,9 +22,11 @@ const Login = () => {
         reValidateMode: 'onChange',
     });
 
-    const form = register;
-    console.log(form)
-    console.log(errors);
+
+
+    const isErrorEmail = !errors.email?.message === false
+    const isErrorPassword = !errors.password?.message === false
+
 
     return (
 
@@ -102,13 +104,41 @@ const Login = () => {
                                     <InputLeftAddon>
                                         <MdEmail />
                                     </InputLeftAddon>
-                                    <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')} />
+                                    <FormControl isInvalid={isErrorEmail}>
+                                        <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')} />
+                                        {!isErrorEmail ? (
+                                            <FormHelperText>
+                                                {null}
+                                            </FormHelperText>
+                                        ) : (
+                                            <FormErrorMessage>
+                                                <Alert status='error'>
+                                                    <AlertIcon />
+                                                    {errors?.email?.message}
+                                                </Alert>
+                                            </FormErrorMessage>
+                                        )}
+                                    </FormControl>
                                 </InputGroup>
                                 <InputGroup>
                                     <InputLeftAddon>
                                         <FaKey />
                                     </InputLeftAddon>
-                                    <Input type='password' placeholder='senha' {...register('password')} />
+                                    <FormControl isInvalid={isErrorPassword}>
+                                        <Input type='password' placeholder='senha' {...register('password')} />
+                                        {!isErrorPassword ? (
+                                            <FormHelperText>
+                                                {null}
+                                            </FormHelperText>
+                                        ) : (
+                                            <FormErrorMessage>
+                                                <Alert status='error'>
+                                                    <AlertIcon />
+                                                    {errors?.password?.message}
+                                                </Alert>
+                                            </FormErrorMessage>
+                                        )}
+                                    </FormControl>
                                 </InputGroup>
                                 <Button
                                     title='ENTRAR'
