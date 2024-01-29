@@ -18,7 +18,7 @@ const Login = () => {
         formState: { errors, isValid }
     } = useForm({
         resolver: yupResolver(schema),
-        mode: 'onBlur',
+        mode: 'onChange',
         reValidateMode: 'onChange',
     });
 
