@@ -2,9 +2,9 @@ import { Alert, AlertIcon, Box, Button, FormControl, FormErrorMessage, FormHelpe
 import { FaFacebook, FaGoogle, FaKey, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
-import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import React from 'react';
 
 const schema = yup.object({
     email: yup.string().email('Email inválido').required('Campo obrigatório'),

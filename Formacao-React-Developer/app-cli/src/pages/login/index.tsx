@@ -18,10 +18,9 @@ import { MdEmail, MdLock } from "react-icons/md";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../services/api";
+import { AuthContext } from "../../context/auth"
 import { IFormDate } from "./types";
-import React from "react";
+import React, { useContext } from "react";
 
 const schema = yup
   .object({
@@ -37,35 +36,21 @@ const schema = yup
   .required();
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { handleLogin } = useContext(AuthContext);
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm <IFormDate>({
+  } = useForm<IFormDate>({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
 
   const onSubmit = async (formData: IFormDate) => {
-    try {
-      const { data } = await api.get(
-        `users?email=${formData.email}&senha=${formData.password}`
-      );
-      if (data.length === 1) {
-        navigate("/feed");
-      } else {
-        alert("Email ou senha invalido");
-      }
-    } catch (error) {
-      alert("Houve um erro, tente novamente.");
-    }
+    handleLogin(formData)
   };
 
-  const handleClickSignUp = () => {
-    navigate("/register");
-  };
 
   return (
     <>
@@ -102,7 +87,7 @@ const Login = () => {
             <Row>
               <EsqueciText>Esqueci minha senha</EsqueciText>
               <CriarText>
-                <LinkDinamic onClick={handleClickSignUp}>Criar Conta</LinkDinamic>
+                <LinkDinamic>Criar Conta</LinkDinamic>
               </CriarText>
             </Row>
           </Wrapper>

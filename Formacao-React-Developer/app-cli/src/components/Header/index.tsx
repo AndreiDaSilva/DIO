@@ -1,5 +1,6 @@
-import React from "react";
-import logo from "../../assets/img/LOGO-DIO-COLOR.png";
+import React, { useContext } from "react";
+import {AuthContext} from '../../context/auth'
+import * as logo from "../../assets/img/LOGO-DIO-COLOR.png";
 
 import {
   BuscarInputContainer,
@@ -13,9 +14,11 @@ import {
 } from "./styles";
 import { Button } from "../Button";
 import { useNavigate } from "react-router-dom";
-import { IHeader } from "./types";
 
-const Header = ({ autenticado }: IHeader) => {
+const Header = () => {
+
+  const { user } = useContext(AuthContext);
+  
   const navigate = useNavigate();
   const handleClickSignIn = () => {
     navigate("/login");
@@ -24,7 +27,7 @@ const Header = ({ autenticado }: IHeader) => {
     navigate("/register");
   };
 
-  const handleClickHome= () => {
+  const handleClickHome = () => {
     navigate("/");
   };
 
@@ -35,7 +38,7 @@ const Header = ({ autenticado }: IHeader) => {
           <a onClick={handleClickHome}>
             <img src={logo} alt="logo dio" width={"72px"} />
           </a>
-          {autenticado ? (
+          {user.id ? (
             <>
               <BuscarInputContainer>
                 <Input placeholder="Buscar..." />
@@ -46,7 +49,7 @@ const Header = ({ autenticado }: IHeader) => {
           ) : null}
         </Row>
         <Row>
-          {autenticado ? (
+          {user.id ? (
             <>
               <UserPicture src="" />
             </>
@@ -54,7 +57,7 @@ const Header = ({ autenticado }: IHeader) => {
             <>
               <MenuRight onClick={handleClickHome}>Home</MenuRight>
               <Button title={"Entrar"} onClick={handleClickSignIn} />
-              <Button title={"Cadastrar"} onClick={ handleClickSignUp } />
+              <Button title={"Cadastrar"} onClick={handleClickSignUp} />
             </>
           )}
         </Row>
