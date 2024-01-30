@@ -105,7 +105,7 @@ const Login = () => {
                                         <MdEmail />
                                     </InputLeftAddon>
                                     <FormControl isInvalid={isErrorEmail}>
-                                        <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')} />
+                                        <Input type='email' placeholder='usuario/email' w='50vh' {...register('email')} autoComplete='off' />
                                         {!isErrorEmail ? (
                                             <FormHelperText>
                                                 {null}
@@ -125,7 +125,7 @@ const Login = () => {
                                         <FaKey />
                                     </InputLeftAddon>
                                     <FormControl isInvalid={isErrorPassword}>
-                                        <Input type='password' placeholder='senha' {...register('password')} />
+                                        <Input type='password' placeholder='senha' {...register('password')} autoComplete='off' />
                                         {!isErrorPassword ? (
                                             <FormHelperText>
                                                 {null}
@@ -141,10 +141,13 @@ const Login = () => {
                                     </FormControl>
                                 </InputGroup>
                                 <Button
+                                    loadingText='Aguarde'
                                     title='ENTRAR'
                                     colorScheme='teal'
                                     variant='solid'
-                                    _hover={{ bg: '#58AF9C', color: '#fff' }}>
+                                    _hover={{ bg: '#58AF9C', color: '#fff' }}
+                                    isLoading={isValid ? false : true}
+                                >
                                     ENTRAR
                                 </Button>
                             </Stack>
