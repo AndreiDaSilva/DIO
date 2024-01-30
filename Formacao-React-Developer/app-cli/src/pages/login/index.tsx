@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Container,
   Title,
@@ -18,9 +19,8 @@ import { MdEmail, MdLock } from "react-icons/md";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { AuthContext } from "../../context/auth"
 import { IFormDate } from "./types";
-import React, { useContext } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 const schema = yup
   .object({
@@ -36,7 +36,7 @@ const schema = yup
   .required();
 
 const Login = () => {
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin } = useAuth();
 
   const {
     control,
