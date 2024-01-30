@@ -9,7 +9,7 @@
     "esModuleInterop": true,
   }, 
   "include": [
-    "./scr/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"

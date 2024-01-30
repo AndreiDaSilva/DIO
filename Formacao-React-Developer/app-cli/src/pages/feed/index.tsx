@@ -11,7 +11,6 @@ const Feed = () => {
       <Container>
         <Column flex={3}>
           <Title>FEED</Title>
-          <p>{user.name}</p>
           <Card />
           <Card />
           <Card />
