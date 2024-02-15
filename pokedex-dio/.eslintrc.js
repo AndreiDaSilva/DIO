@@ -1,21 +1,21 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true,
-  },
-  extends: [
-    'plugin:vue/recommended',
-    '@vue/airbnb',
-  ],
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-  },
-  rules: {
+	root: true,
+	env: {
+		node: true,
+	},
+	extends: [
+		'plugin:vue/recommended',
+		'@vue/airbnb',
+	],
+	parserOptions: {
+		parser: '@babel/eslint-parser',
+	},
+	rules: {
 		'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
 		'import/no-extraneous-dependencies': 'off',
 		'indent': ['error', 'tab'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 		'no-tabs': 'off',
 		'prefer-destructuring': ['error', {
 			'object': true,
