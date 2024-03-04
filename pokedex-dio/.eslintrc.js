@@ -8,7 +8,7 @@ module.exports = {
 		'@vue/airbnb',
 	],
 	parserOptions: {
-		parser: '@babel/eslint-parser',
+		parser: 'babel-eslint',
 	},
 	rules: {
 		'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],

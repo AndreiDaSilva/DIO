@@ -1,16 +1,16 @@
-import { axios } from "axios";
+import axios from 'axios';
 import {
 	requestInterceptor,
 	responseSuccessInterceptor,
 	responseErrorInterceptor,
-} from './interceptors'
+} from './interceptors';
 
 function Factory(baseURL) {
 	const instance = axios.create({
 		baseURL,
 	});
 
-	instance.intereceptors.request.use(requestInterceptor);
+	instance.interceptors.request.use(requestInterceptor);
 
 	instance.interceptors.response.use(
 		responseSuccessInterceptor,
