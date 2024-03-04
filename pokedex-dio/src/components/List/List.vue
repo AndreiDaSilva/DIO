@@ -3,13 +3,13 @@
 </template>
 
 <script>
-	export default {
-		name: 'List',
-	};
+export default {
+	name: "List",
+};
 </script>
 
 <style lang="scss" scoped>
-	.list {
+	.list{
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -21,7 +21,7 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 
-		&::-webkit-scrollbar {
+		&::-webkit-scrollbar{
 			display: none;
 		}
 
