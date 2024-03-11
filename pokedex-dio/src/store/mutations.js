@@ -1,60 +1,56 @@
-import state from './state'
+import state from './state';
 
 export default {
-
-	//Updates da pokedex no loading offset
+	// Updates the pokedex loading offset
 	updateOffset() {
 		state.offset += state.limit;
 	},
-
-	//Adds pokemons na pokedex para o efeito de infiite loading
-	setList(list){
+	// Adds pokemons to the pokedex for the infinite loading
+	setList(list) {
 		state.list.push(...list);
-		state.tmpList.push(...list)
+		state.tmpList.push(...list);
 	},
-
-	//Informar se a pokedex precissa de mais dados
-	setListHasNext(flag){
+	// Informs if the pokedex needs more data
+	setListHasNext(flag) {
 		state.listHasNext = flag;
 	},
-
-	//Informar se a pokedex terminou de buscar os dados
-	setListHasComplete(flag){
+	// Informs if the pokedex has finished fetching data
+	setListHasCompleted(flag) {
 		state.listHasCompleted = flag;
 	},
-
-	//Informar se a pokedex teve um erro
-	setListHasError(flag){
+	// Informs if the pokedex got an error
+	setListHasError(flag) {
 		state.listHasError = flag;
 	},
-
-	//Resetar a pokedex para o ultimo cache e remover o dado de busca
-	resetList(){
+	// Resets the pokedex to the last cache and removes search information
+	resetList() {
 		state.list = [...state.tmpList];
 		state.isPokemonSearch = false;
 		state.listHasError = false;
 		state.searchHasError = false;
+		state.pokemonId = null;
 	},
 
-	//Add na pokedex somente o pokemom que foi buscado
-	setPokemonSearched(pokemom){
-		state.list = [pokemom];
+	// Adds to the pokedex only the searched pokemon
+	setPokemonSearched(pokemon) {
+		state.list = [pokemon];
 	},
-
-	//Informar que a busca esta acontecendo
-	setIsSearching(flag){
+	// Informs that the search is happening
+	setIsSearching(flag) {
 		state.isSearching = flag;
 	},
-
-	//Informar que a busca foi feita
-	setIsPokemomSearch(flag){
+	// Informs that the search has been done
+	setIsPokemonSearch(flag) {
 		state.isPokemonSearch = flag;
 	},
-
-	//Informar se a busca teve algum erro
-	setSearchHasError(flag){
+	// Informs that search got an error
+	setSearchHasError(flag) {
 		state.searchHasError = flag;
-	}
+	},
 
-
+	// Select Pokemon
+	setPokemonId(id = null) {
+		state.isPokemonSearch = false;
+		state.pokemonId = id;
+	},
 };

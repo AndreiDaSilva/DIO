@@ -1,47 +1,47 @@
-import PokeApi from "@/servers/pokeapi";
+import PokeAPI from '@/services/pokeapi';
 
-import state from "./state";
-import mutations from "./mutations";
+import state from './state';
+import mutations from './mutations';
 
 export default {
 	async getPokemons() {
 		const {
 			setList,
-			setIsPokemomSearch,
+			setIsPokemonSearch,
 			setListHasError,
 			setListHasNext,
-			setListHasComplete,
+			setListHasCompleted,
 			updateOffset,
 		} = mutations;
 
 		try {
-			setIsPokemomSearch(false);
+			setIsPokemonSearch(false);
 			setListHasError(false);
 
-			const pokemonsList = await PokeApi.getPokemon({ limit: state.limit, offset: state.offset });
+			const pokemonsList = await PokeAPI.getPokemons({ limit: state.limit, offset: state.offset });
 
 			if (pokemonsList?.results?.length) {
-				const prepareInfo = pokemonsList.results.map(item => PokeApi.getPokemonByName(item.name));
-				const pokemonInfo = await Promise.all(prepareInfo);
+				const prepareInfo = pokemonsList.results.map(item => PokeAPI.getPokemonByName(item.name));
+				const pokemonsInfo = await Promise.all(prepareInfo);
 
-				setList(pokemonInfo);
+				setList(pokemonsInfo);
 			}
+
 			if (pokemonsList?.next) {
 				setListHasNext(true);
 				updateOffset();
 			} else {
 				setListHasNext(false);
-				setListHasComplete(true);
+				setListHasCompleted(true);
 			}
 		} catch (error) {
 			setListHasError(true);
 		}
 	},
-
 	async getPokemonByName(name) {
 		const { setPokemonSearched } = mutations;
 
-		const pokemon = await PokeApi.getPokemonByName(name);
+		const pokemon = await PokeAPI.getPokemonByName(name);
 
 		if (pokemon) {
 			setPokemonSearched(pokemon);
@@ -49,7 +49,7 @@ export default {
 	},
 	async searchPokemon(name) {
 		const {
-			setIsPokemomSearch,
+			setIsPokemonSearch,
 			setIsSearching,
 			setPokemonSearched,
 			setSearchHasError,
@@ -64,9 +64,9 @@ export default {
 		try {
 			setSearchHasError(false);
 			setIsSearching(true);
-			setIsPokemomSearch(true);
+			setIsPokemonSearch(true);
 
-			const pokemon = state.list.find(info => info.name.toLowerCase() === name.toLowerCase())
+			const pokemon = state.tmpList.find(info => info.name.toLowerCase() === name.toLowerCase());
 
 			if (pokemon) {
 				setPokemonSearched(pokemon);

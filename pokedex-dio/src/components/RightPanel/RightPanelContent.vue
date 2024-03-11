@@ -1,16 +1,40 @@
 <template>
-	<form class="search">
+	<div class="search">
 		<label for="search" class="search__label text--white bg--black">
-			<h3 class="search__label--text">E.g: Charizard</h3>
-			<input id="search" type="text" class="search__input" />
+			<h3 class="search__label--text">E.g: Charizard | 6</h3>
+			<input
+			id="search"
+			v-model.trim="name"
+			type="text"
+			class="search__input"
+			@keyup.enter="searchPokemon"
+			>
 		</label>
-		<button class="search__button text--yellow bg--gray" @click.prevent>Search</button>
-	</form>
+		<div class="buttons">
+		<button class="btn btn--clear text--yellow bg--gray" @click.prevent="clear">Clear</button>
+		<button class="btn btn--search text--yellow bg--gray" @click.prevent="searchPokemon">Search</button>
+		</div>
+	</div>
 </template>
 
 <script>
+import {actions, mutations} from '@/store'
 export default {
 	name: "RightPanelContent",
+	data() {
+		return {
+			name: '',
+		}
+	},
+	methods: {
+		clear() {
+
+		},
+		searchPokemon(){
+
+		}
+
+	}
 };
 </script>
 
@@ -52,7 +76,7 @@ export default {
 		}
 	}
 
-	&__button{
+	&__button {
 		align-self: flex-end;
 		width: 120px;
 		height: 50px;
