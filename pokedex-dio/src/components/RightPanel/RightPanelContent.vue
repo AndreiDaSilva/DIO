@@ -1,40 +1,47 @@
 <template>
 	<div class="search">
 		<label for="search" class="search__label text--white bg--black">
-			<h3 class="search__label--text">E.g: Charizard | 6</h3>
+			<h3 class="search__label--text">E.g.: Charizard | 6</h3>
 			<input
-			id="search"
-			v-model.trim="name"
-			type="text"
-			class="search__input"
-			@keyup.enter="searchPokemon"
-			>
+				id="search"
+				v-model.trim="name"
+				type="text"
+				class="search__input"
+				@keyup.enter="searchPokemon"
+			/>
 		</label>
+
 		<div class="buttons">
-		<button class="btn btn--clear text--yellow bg--gray" @click.prevent="clear">Clear</button>
-		<button class="btn btn--search text--yellow bg--gray" @click.prevent="searchPokemon">Search</button>
+			<button class="btn btn--clear" @click.prevent="clear">Clear</button>
+			<button class="btn btn--search bg--gray text--yellow" @click.prevent="searchPokemon">
+				Search
+			</button>
 		</div>
 	</div>
 </template>
 
 <script>
-import {actions, mutations} from '@/store'
+import { actions, mutations } from "@/store";
+
 export default {
 	name: "RightPanelContent",
 	data() {
 		return {
-			name: '',
-		}
+			name: "",
+		};
 	},
 	methods: {
 		clear() {
-
+			this.name = "";
+			mutations.resetList();
 		},
-		searchPokemon(){
-
-		}
-
-	}
+		async searchPokemon() {
+			await actions.searchPokemon(this.name);
+		},
+		selectPokemon() {
+			mutations.setPokemonId(this.id);
+		},
+	},
 };
 </script>
 
@@ -64,6 +71,7 @@ export default {
 			padding: 12px 24px 24px;
 		}
 	}
+
 	&__input {
 		color: inherit;
 		background: transparent;
@@ -76,19 +84,33 @@ export default {
 		}
 	}
 
-	&__button {
-		align-self: flex-end;
-		width: 120px;
-		height: 50px;
-		border: 4px solid color(black);
-		border-radius: 8px;
-		font-size: 18px;
-		font-weight: bold;
-		cursor: pointer;
+	.buttons {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
 
-		@media (min-width: $viewport-medium) {
-			width: 160px;
-			height: 60px;
+		.btn {
+			border-radius: 8px;
+			font-size: 18px;
+			font-weight: bold;
+			cursor: pointer;
+
+			&--clear {
+				width: 80px;
+				padding: 8px;
+				margin-right: 16px;
+				border: none;
+			}
+
+			&--search {
+				width: 120px;
+				padding: 15px;
+				border: 4px solid color(black);
+
+				@media (min-width: $viewport-medium) {
+					width: 160px;
+				}
+			}
 		}
 	}
 }

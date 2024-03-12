@@ -1,7 +1,6 @@
-/* styledlint-disable */
+/* stylelint-disable */
 
 /* Box sizing rules */
-
 *,
 *::before,
 *::after {
@@ -15,7 +14,6 @@ ol[class] {
 }
 
 /* Remove default margin */
-
 body,
 h1,
 h2,
@@ -49,21 +47,20 @@ ol[class] {
 	list-style: none;
 }
 
-/* A elements that don't have class get default styles*/
+/* A elements that don't have a class get default styles */
 a:not([class]) {
 	text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to wrk with*/
+/* Make images easier to work with */
 img {
 	max-width: 100%;
 	display: block;
 }
 
 /* Natural flow and rhythm in articles by default */
-
 article > * + * {
-	margin-top: 1rem;
+	margin-top: 1em;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -79,10 +76,9 @@ img:not([alt]) {
 	filter: blur(10px);
 }
 
-/* Remove all animations and transitons for people that prefer not to see them*/
-
+/* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-	*{
+	* {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
